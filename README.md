@@ -1,34 +1,35 @@
 # Sharif University of Technology - Probability and Statistics Project 📊
 
-This repository contains the comprehensive course project developed for **Probability and Engineering Statistics** during **Term 14031 (Fall 2024)** under the supervision of **Dr. Amini** at the **Department of Electrical Engineering, Sharif University of Technology**.
+This repository contains the comprehensive course project developed for **Engineering Probability and Statistics** under the supervision of **Dr. Amini** during **Term 14031 (Fall 2024)** at the **Department of Electrical Engineering, Sharif University of Technology**.
 
-The project involves computational modeling, numerical simulations, and theoretical analysis of complex probabilistic frameworks, stochastic processes, and optimization theorems.
+The project features numerical simulations, algorithmic modeling, and theoretical validations of three core paradigms in probability theory implemented entirely in **Python** using **Jupyter Notebooks**.
 
 ---
 
-## 🛠️ Core Project Modules
+## 📂 Project Modules & Core Concepts
 
-The project is structured around three foundational domains in probability theory and stochastic analysis:
+The implementation is divided into three distinct probabilistic simulations:
 
-### 1. ⛓️ Markov Chains (Stochastic Processes)
-- Simulation and analysis of discrete-time Markov chains (DTMCs).
-- Computation of transition probability matrices, steady-state distributions, and limiting behaviors for engineering applications.
+### 1. ⛓️ Markov Chains (زنجیره‌های مارکوف)
+- Simulation of stochastic processes and state transition behaviors.
+- Calculation of stationary distributions, limiting probabilities, and analyzing state classification (recurrent, transient, and absorbing states).
 
-### 2. 💼 The Secretary Problem (Optimal Stopping Theory)
-- Algorithmic implementation of the optimal stopping rule ($1/e$ law of best choice).
-- Running Monte Carlo simulations to empirically validate the $\approx 37\%$ threshold for maximizing selection probability in decision-making models.
+### 2. 👥 The Secretary Problem / Optimal Stopping (مسئله منشی)
+- Algorithmic evaluation of the optimal stopping theory to maximize the probability of selecting the best candidate from a pool.
+- Numerical validation of the classic $1/e$ ($\approx 37\%$) rule through extensive Monte Carlo simulations.
 
-### 3. 📉 Central Limit Theorem (CLT) Validation
-- Numerical verification of the Central Limit Theorem across various independent and identically distributed ($i.i.d.$) non-normal distributions.
-- Simulating sample means to demonstrate asymptotic convergence to a normal (Gaussian) distribution, complete with convergence rate mapping.
+### 3. 📉 Central Limit Theorem - CLT (قضیه حد مرکزی)
+- Demonstration of the convergence of the sum of independent and identically distributed (i.i.d.) random variables toward a normal (Gaussian) distribution, regardless of the original distribution shape.
+- Empirical verification of the law of large numbers and error margins as the sample size $n$ approaches infinity.
 
 ---
 
 ## 💻 Technical Stack & Environment
 
-- **Languages:** C++ (C++17) / Python (depending on the implementation suite)
-- **Environment:** JetBrains CLion / VS Code / Jupyter Notebook
-- **Core Methodology:** Monte Carlo simulations, numerical estimation, and statistical modeling.
+- **Language:** Python 3.x
+- **Environment:** Jupyter Notebook (`.ipynb`)
+- **Core Libraries Used:** `numpy`, `scipy`, `matplotlib` (for plotting distributions and simulation curves)
+- **Concepts Applied:** Monte Carlo Simulation, Stochastic Modeling, Numerical Analysis
 
 ---
 
