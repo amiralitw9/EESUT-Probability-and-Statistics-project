@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}نکات مهم}{2}{section.1}%
+\contentsline {section}{\numberline {2}مسئله منشی}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}بیان مسئله}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}فروش بهینه}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}تحلیل رفتار}{4}{section.3}%
+\contentsline {section}{\numberline {4}تحلیل با توزیع نمایی و مکانیزم پیشنهادی}{5}{section.4}%

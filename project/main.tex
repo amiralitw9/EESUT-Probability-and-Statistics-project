@@ -1,0 +1,460 @@
+\documentclass[a4paper]{article}
+%\pagestyle{empty}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+% 	total={170mm,257mm},
+	left=30mm,
+	right=30mm,
+	top=25mm,
+	bottom=25mm
+}
+\usepackage[usenames,dvipsnames]{color,xcolor}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, listings, multirow, wrapfig}
+\usepackage{dsfont} 
+% \usepackage{hyperref} % If you are using hyperlinks
+% \usepackage[algo2e,ruled]{algorithm2e}
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb} % Math packages
+\usepackage{enumitem}
+\usepackage{calc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{mathtools}
+%\usepackage{commath}
+\usepackage{verbatim}
+\input{Header/Header}
+%\usepackage{enumerate} % Custom item numbers for enumerations
+\usepackage{tikz}
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{pgfplots} % for the axis environment
+\usepackage{xcolor}
+\usepackage[outline]{contour} % halo around text
+\contourlength{1.2pt}
+\usetikzlibrary{positioning,calc}
+\usetikzlibrary{backgrounds}% required for 'inner frame sep'
+%\usepackage{adjustbox} % add whitespace (trim)
+
+% define gaussian pdf and cdf
+\pgfmathdeclarefunction{gauss}{3}{%
+  \pgfmathparse{1/(#3*sqrt(2*pi))*exp(-((#1-#2)^2)/(2*#3^2))}%
+}
+\pgfmathdeclarefunction{cdf}{3}{%
+  \pgfmathparse{1/(1+exp(-0.07056*((#1-#2)/#3)^3 - 1.5976*(#1-#2)/#3))}%
+}
+\pgfmathdeclarefunction{fq}{3}{%
+  \pgfmathparse{1/(sqrt(2*pi*#1))*exp(-(sqrt(#1)-#2/#3)^2/2)}%
+}
+\pgfmathdeclarefunction{fq0}{1}{%
+  \pgfmathparse{1/(sqrt(2*pi*#1))*exp(-#1/2))}%
+}
+
+\colorlet{mydarkblue}{blue!30!black}
+
+% to fill an area under function
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\pgfplotsset{compat=1.12} % TikZ coordinates <-> axes coordinates
+% https://tex.stackexchange.com/questions/240642/add-vertical-line-of-equation-x-2-and-shade-a-region-in-graph-by-pgfplots
+
+% plot aspect ratio
+%\def\axisdefaultwidth{8cm}
+%\def\axisdefaultheight{6cm}
+
+% number of sample points
+\def\N{50}
+\usepackage[colorlinks=true,citecolor=blue]{hyperref}%
+% \usetikzlibrary{arrows}
+
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{thmtools}
+\usepackage{listings} % File listings, with syntax highlighting
+\lstset{
+	basicstyle=\ttfamily, % Typeset listings in monospace font
+}
+
+\definecolor{ThQColor}{RGB}{20,100,250}
+\definecolor{SimQColor}{RGB}{40,140,22}
+\declaretheoremstyle[
+headfont=\color{ThQColor}\normalfont\bfseries,
+bodyfont=\color{ThQColor}\normalfont,
+]{ThQStyle}
+
+\declaretheorem[
+style=ThQStyle,
+name= پرسش تئوری,
+]{ThQuestion}
+
+\declaretheoremstyle[
+headfont=\color{SimQColor}\normalfont\bfseries,
+bodyfont=\color{SimQColor}\normalfont,
+]{SimQStyle}
+
+\declaretheorem[
+style=SimQStyle,
+name= پرسش شبیه‌سازی,
+]{SimQuestion}
+
+\newcommand\symbolsname[2]{#1\dotfill\lr{#2}\\}
+\usepackage{bbm}
+\usepackage{bidiftnxtra}
+\usepackage{xepersian}
+% \settextfont[Scale=1]{Persian Modern}
+\settextfont[
+Scale=1,
+Extension=.ttf, 
+Path=font/,
+BoldFont=HM_FElmiBd
+]{HM_FElmi}
+\setdigitfont[
+Scale=1,
+Extension=.ttf, 
+Path=font/,
+BoldFont=HM_FElmiBd
+]{HM_FElmi}
+% \definepersianfont\ArabicFont[
+% Scale=1,
+% Extension=.ttf, 
+% Path=font/,
+% BoldFont=amiri-bold
+% ]{amiri-regular}
+% \settextfont{HM_FElmi}
+%\setlatintextfont{Serif}
+% \setdigitfont{HM_FElmi}
+% \DefaultMathsDigits
+
+% \renewcommand{\bibname}{مراجع}
+
+%\renewcommand{\labelitemi}{$\circ$}
+%\renewcommand{\bibname}{مراجع}
+%\newtheorem{den}{{\large\bf تعریف}}[section]
+%\newtheorem{exa}{{\large\bf مثال}}[section]
+%\newtheorem{lem}{{\large\bf لم}}[section]
+%\newtheorem{pro}{{\large\bf گزاره}}[section]
+%\newtheorem{cor}{{\large\bf نتیجه}}[section]
+%\newtheorem{thm}{{\large\bf قضیه}}[section]
+%\newtheorem{rem}{{\large\bf تذکر}}[section]
+%\newtheorem{nnt}{{\large\bf توجه}}[section]
+%
+%
+% \newcommand{\bv}{\mathbf{v}}
+% \newcommand{\bu}{\mathbf{u}}
+
+% \newcommand{\bg}{\mathbf{g}}
+% \newcommand{\bz}{\mathbf{z}}
+
+
+% \newcommand{\bx}{\mathbf{x}}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\E}{\mathbb{E}}
+%\newcommand{\Prob}{\mathbb{P}}
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\Nd}{\mathcal{N}}
+%\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\HSIC}{\mathrm{HSIC}}
+%\newcommand{\LL}{\mathcal{L}}
+%\newcommand{\bigCI}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+
+
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	باسمه تعالی
+	\vspace{0.3 cm}
+% 	\settextfont{\MainFont}
+	\begin{figure}[h!]
+		\includegraphics[width=4 cm]{figures/sharif_logo.png}
+		\centering
+		\label{logo}
+	\end{figure}
+	
+	
+	
+	\huge
+	%\textbf{دانشگاه صنعتی شریف}
+	
+	
+	\vspace{1.0 cm}
+	
+	\huge
+	پروژه‌ی درس آمار و احتمال مهندسی
+	
+	\vspace{2 cm}
+	
+	\Huge
+	
+	\textbf{
+تصمیم گیری با وجود ابهام
+}
+	\vspace{0.5 cm}
+	
+	
+	\large
+	\vspace{2 cm}
+	استاد درس
+	
+	\LARGE
+	دکتر آرش امینی
+	\vspace{2 cm}
+	
+	\Large
+	دانشکده‌ی مهندسی برق
+	
+	دانشگاه صنعتی شریف
+	
+	\vspace{2 cm}
+	
+پاییز 1403
+
+	\vspace{2 cm}
+	
+	آخرین مهلت تحویل:
+	
+	17 دی 1403
+\end{titlepage}
+\tableofcontents
+\newpage
+\large
+
+
+\clearpage
+
+
+\underline{
+\textbf{
+حتما قبل از شروع پروژه بخش
+\ref{sec:important_points}
+را مطالعه نمایید.
+}}
+
+\section{نکات مهم}
+\label{sec:important_points}
+لطفاً به نکات زیر دقّت کنید:
+\begin{enumerate}
+\item
+دو فاز این پروژه در مجموع 2 تا 3 نمره از نمره درس را تشکیل می دهند.
+\item
+پس از پایان پروژه یک روز برای تحویل حضوری پروژه در نظر گرفته می شود و باید کد ها و خروجی های خود را در حضور دستیاران آموزشی ارائه دهید و به پرسش های دستیاران پاسخ دهید. دقت کنید که تمام اعضای گروه باید به تمام بخش های پروژه مسلط باشند. در نهایت برای تمام اعضای گروه یک نمره در نظر گرفته خواهد شد.
+	\item 
+	تمام بخش های هر دو فاز پروژه اجباری هستند و نمره امتیازی برای آن در نظر گرفته نشده است.
+	\item 
+	تمامی شبیه‌سازی‌ها باید با کمک زبان
+	\lr{Python}
+انجام شود. همچنین مجاز هستید از تمام کتابخانه هایی که در طول تمرین ها از آنها استفاده کرده اید مانند
+\texttt{numpy}،
+\texttt{scipy}
+و
+\texttt{pytorch}
+استفاده نمایید اما دقت کنید پیاده سازی الگوریتم ها باید توسط شما انجام شده باشد و نمیتوانید از کتابخانه هایی که الگوریتم را به صورت آماده پیاده سازی کرده اند استفاده نمایید.
+	\item
+	تحویل پروژه به صورت گزارش و کدهای نوشته‌شده است. گزارش باید شامل پاسخ پرسش‌ها، تصاویر و نمودارها و نتیجه‌گیری‌های لازم باشد. در نهایت یک فایل شامل کد ها و یک گزارش به فرمت
+\lr{pdf}
+را در سامانه 
+\lr{CW}
+آپلود نمایید. آپلود کردن پروژه توسط یکی از اعضای گروه کافی میباشد.
+	\item
+	اگر برای پاسخ به پرسش‌ها، از منبعی (کتاب، مقاله، سایت و...) کمک گرفته‌اید، حتماً به آن ارجاع دهید.
+	
+	\item 
+	درصورت مشاهده‌ی تقلّب، نمره‌ی هردو فرد صفر منظور خواهد شد.
+
+\item
+در صورت داشتن پرسش به
+\lr{@GhLmu}،
+و
+\lr{@BornaKhodabandeh}، مسئولین پروژه
+پیام دهید.
+\end{enumerate}
+\begin{flushleft}
+	موفّق باشید!
+\end{flushleft}
+
+
+\newpage
+
+
+% \section{شبیه‌سازی مونته کارلو}
+
+\section{مسئله منشی}
+
+\subsection{بیان مسئله}
+
+در مسئله منشی، چالش اصلی یافتن نقطهٔ بهینه میان میزان اطلاعات دریافت‌شده و زمان مناسب برای استفاده از این اطلاعات است.
+
+شکل استاندارد این مسئله به این صورت است: $N$ نفر برای منشی‌گری تقاضا می‌دهند و به‌طور تصادفی مرتب شده و یکی پس از دیگری مصاحبه می‌شوند. مصاحبه‌کننده در هر لحظه اطلاعات متقاضی‌های قبلی و متقاضی فعلی را دارد و باید همان‌جا تصمیم بگیرد که فرد را انتخاب کند یا رد کند. فرد ردشده قابل‌بازگشت نیست و هدف، یافتن بهترین متقاضی است.
+
+در ابتدای فرآیند، احتمال اینکه متقاضی‌های اولیه بهترین باشند کم است، بنابراین انتخاب در ابتدای بازی منطقی نیست. اما اگر بیش از حد متقاضی‌ها را رد کنیم، ممکن است بهترین متقاضی را از دست بدهیم. بنابراین چالش این مسئله، تعیین تعداد بهینه‌ای از افراد ($r$) است که باید رد شوند تا اطلاعات کافی کسب شود، بدون آنکه بهترین متقاضی از دست برود.
+
+استراتژی بهینه این است که $r$ متقاضی اول را رد کنیم و سپس اولین متقاضی که بهتر از افراد قبلی باشد را انتخاب کنیم. اگر تا نفر آخر کاندیدای مطلوب پیدا نشد، نفر آخر انتخاب می‌شود.
+
+\vspace{5mm}{\color{ThQColor}\hrule}
+\begin{ThQuestion}
+	استراتژی بهینه را تحلیل کنید.
+
+	\begin{enumerate}
+		\item احتمال انتخاب بهترین کاندید با این استراتژی را برحسب $r$ بدست آورید.
+		\item برای مقادیر بزرگ $N$، این احتمال را به‌صورت تابعی پیوسته از $r$ تخمین بزنید.
+		\item مقدار بهینه $r$ را برای مقادیر بزرگ $N$ تخمین بزنید.
+		\item احتمال انتخاب بهترین کاندید با استفاده از این مکانیزم چقدر است؟
+	\end{enumerate}
+\end{ThQuestion}
+{\color{ThQColor}\hrule}\vspace{5mm}
+
+اگر پرسش‌های بالا درست پاسخ داده شوند، می‌توان اثبات کرد که در حالتی که تنها ابزار ما مقایسه متقاضی‌ها باشد و هدف انتخاب بهترین باشد، این مکانیزم بهینه است.
+
+\subsection{فروش بهینه}
+
+حال این مکانیزم را در یک سناریو واقعی‌تر بررسی می‌کنیم.
+فرض کنید شما کالایی برای فروش دارید و روزانه $N$ خریدار به شما قیمتی پیشنهاد می‌دهند. خریدار $i$ام به شما قیمت $v_i$ را پیشنهاد می‌دهد. هدف شما فروش کالا به بالاترین قیمت ممکن است. در اینجا فرض می‌کنیم قیمت‌ها، $v_1, v_2, \dots, v_N$, از یک توزیع احتمال $\mathcal{D}$ مستقل و همسان توزیع شده هستند. نوعی مدل رفتاری برای خریدار ها.
+
+\vspace{5mm}{\color{ThQColor}\hrule}
+\begin{ThQuestion}
+	فرض کنید $\mathcal{D}=U[a,b]$. به سوالات زیر پاسخ دهید.
+
+	\begin{enumerate}
+		\item اگر تمامی پیشنهادها از قبل معلوم بودند، کالا به قیمت $\max\limits_{1\leq i\leq N} v_i$ فروخته می‌شد. امید ریاضی این مقدار $\mathbb{E}[\max\limits_{1\leq i\leq N} v_i]$ را محاسبه کنید و آن را به‌عنوان یک باند بالا در نظر بگیرید.
+		\item اگر فروش به صورت تصادفی انجام می‌شد، امید بهره چقدر بود؟ این مقدار را به‌عنوان یک باند پایین در نظر بگیرید.
+	\end{enumerate}
+\end{ThQuestion}
+{\color{ThQColor}\hrule}\vspace{5mm}
+
+در حالتی که قیمت‌های $v_i$ مقادیر عددی دارند، مقایسه پیشنهادها آسان است. بنابراین مکانیزم مشابه مسئله منشی قابل اجرا است و کالا به بهترین پیشنهاد فروخته می‌شود. مکانیزم بهینه را با $\mathcal{T}_N$ مشخص می‌کنیم که در آن $\mathcal{T}_N$ زمان توقف بهینه را تعیین می‌کند و مقدار دریافتی ما $v_{\mathcal{T}_N}$ خواهد بود.
+
+\vspace{5mm}{\color{ThQColor}\hrule}
+\begin{ThQuestion}
+	فرض کنید $\mathcal{D}=U[a,b]$. به سوالات زیر پاسخ دهید.
+
+	\begin{enumerate}
+		\item امید ریاضی بهره حاصل از مکانیزم توقف بهینه $\mathbb{E}[v_{\mathcal{T}_N}]$ را برای $N$های بزرگ محاسبه کنید.
+		\item بهره حاصل از این مکانیزم را با باند بالا و پایین مقایسه کنید.
+	\end{enumerate}
+\end{ThQuestion}
+{\color{ThQColor}\hrule}\vspace{5mm}
+
+توجه کنید که در مسئله فروش کالا، بهره ما در قیمت فروش است، و اطلاعات ما میتواند فراتر از توانایی مرتب سازی باشد، مکانیزم مسئله منشی، برای هز توضیعی از 
+پیشنهاد ها قابل اعمال است، ولی طبیعتا اگر ما به آمار پیشنهاد ها اطلاع داشته باشیم، ممکن است بتوانیم عملکرد مطلوب تری را داشتته باشیم.
+
+\vspace{5mm}{\color{SimQColor}\hrule}
+\begin{SimQuestion}
+	با استفاده از شبیه‌سازی \lr{Monte Carlo} و توزیع $\mathcal{D}=U[0,1]$, سناریو پیشین را برای مقادیر مختلف $N$ بین 0 تا 100 شبیه‌سازی کنید. موارد زیر را تحلیل کنید:
+
+\begin{enumerate}
+    \item عملکرد مکانیزم توقف بهینه، باند بالا، و باند پایین را در عمل مقایسه کنید.
+    \item نتایج شبیه‌سازی را با محاسبات تئوری مقایسه کنید.
+\end{enumerate}
+\end{SimQuestion}
+{\color{SimQColor}\hrule}\vspace{5mm}
+
+\section{تحلیل رفتار}
+
+با داشتن اطلاعات آماری درباره توزیع پیشنهادها، می‌توان تصمیم‌گیری را بهبود داد. به عنوان مثال، می‌توان تخمین زد که به احتمال زیاد یک پیشنهاد بالاتر از یک مقدار آستانه $\tau$ در میان $N$ متقاضی وجود دارد:
+\[
+\mathbb{P}[\exists i: v_i \geq \tau] \geq 1-\epsilon
+\]
+
+یک مکانیزم ساده می‌تواند این باشد که کالا به اولین پیشنهاد بالای $\tau$ فروخته شود. اگر چنین پیشنهادی تا نفر آخر نیامد، کالا به نفر آخر فروخته می‌شود.
+
+\vspace{5mm}{\color{ThQColor}\hrule}
+\begin{ThQuestion}
+	فرض کنید $\mathcal{D}=U[a,b]$. به سوالات زیر پاسخ دهید.
+
+\begin{enumerate}
+    \item امید ریاضی بهره را برحسب $\tau$ و $\epsilon$ محاسبه کنید و نمودار آن را برای $a=0, b=1, N=10$ رسم کنید.
+    \item برای $N=20$ و $\epsilon=0.05$, مقدار $\tau$ را محاسبه کنید. امید ریاضی بهره در این حالت چقدر است؟ این مقدار را با مکانیزم‌های پیشین مقایسه کنید.
+    \item رابطه‌ای برای تعیین بهترین مقدار $\tau$ در حضور $N$ متقاضی بدست آورید. 
+\end{enumerate}
+\end{ThQuestion}
+{\color{ThQColor}\hrule}\vspace{5mm}
+
+\vspace{5mm}{\color{SimQColor}\hrule}
+\begin{SimQuestion}
+	با استفاده از شبیه‌سازی \lr{Monte Carlo} و توزیع $\mathcal{D}=U[0,1]$, موارد زیر را تحلیل کنید:
+
+	\begin{enumerate}
+		\item عملکرد مکانیزم توقف بهینه برای $\epsilon=0.05$ و مقدار بهینه $\epsilon^*$ (که با روش‌های عددی محاسبه می‌شود) را شبیه‌سازی کنید. عملکرد این مکانیزم را با مکانیزم های پیشین مقایسه کنید.
+		\item نمودار $\epsilon^*$ و مقدار متناظر $\tau^*$ را برحسب $N$ رسم کنید. چه مفهومی را می‌توان برداشت کرد؟
+	\end{enumerate}
+\end{SimQuestion}
+{\color{SimQColor}\hrule}\vspace{5mm}
+
+در یک سناریو واقعی، ما این دانش پیشین را به رفتار محیط خود، در اینجا خریدارها، نداریم.  
+یک مکانیزم ممکن برای پیشروی در این نوع سناریو، استفاده از یک رویکرد دو مرحله‌ای است:  
+
+\begin{enumerate}
+	\item دوره یادگیری (مشاهده اولیه): در ابتدا برای $r$ خریدار اول ($r \leq N$) صبر می‌کنیم و مقادیر پیشنهاد شده $v_1, v_2, \dots, v_r$ را مشاهده و ثبت می‌کنیم. این داده‌ها به ما اجازه می‌دهند که پارامترهای توزیع $\mathcal{D}$ را با استفاده از این نمونه‌ها تخمین بزنیم (مثلاً میانگین، واریانس، یا پارامترهای دیگر).  
+	\item دوره تصمیم‌گیری: پس از دوره یادگیری، از $t = r + 1$ به بعد، از تخمین به‌دست‌آمده استفاده می‌کنیم تا یک قانون توقف را اعمال کنیم. به عنوان مثال، آستانه $\tau$ را تعیین می‌کنیم و اولین پیشنهادی که بالاتر از $\tau$ باشد را می‌پذیریم. اگر تا خریدار $N$ چنین پیشنهادی نیامد، کالا به نفر آخر فروخته می‌شود.  
+\end{enumerate}
+
+\vspace{5mm}{\color{ThQColor}\hrule}
+\begin{ThQuestion}
+فرض کنید $\mathcal{D}=U[a,b]$. به سوالات زیر پاسخ دهید:
+
+\begin{enumerate}
+    \item برای $r$ خریدار اول، تخمین پارامترهای $\mathcal{D}$ را با استفاده از تخمینگر بیشینه درست نمایی محاسبه کنید.
+    \item رابطه‌ای برای تعیین $\tau$ بر اساس تخمین‌های مرحله اول ارائه دهید. ابتدا برای $\epsilon=0.05$ و سپس رابطه ای برای مقدار بهینه $\tau^*$ بدست آوردید.
+\end{enumerate}
+\end{ThQuestion}
+{\color{ThQColor}\hrule}\vspace{5mm}
+
+\vspace{5mm}{\color{SimQColor}\hrule}
+\begin{SimQuestion}
+با استفاده از شبیه‌سازی \lr{Monte Carlo} و توزیع $\mathcal{D}=U[0,1]$, موارد زیر را تحلیل کنید:
+
+\begin{enumerate}
+    \item برای مقادیر مختلف $r$ با در نظر گیری $N=100$، بهره حاصل از این مکانیزم را شبیه‌سازی و نمودار امید بهره مورد انتظار بر حسب $r$ را رسم کنید.  
+    \item مقدار بهینه $r$ را برای $N$ های متفاوت را پیدا کنید و آن را رسم کنید.
+\end{enumerate}
+\end{SimQuestion}
+{\color{SimQColor}\hrule}\vspace{5mm}  
+
+این مکانیزم، با استفاده از ترکیب مشاهده و تخمین، می‌تواند به کاهش عدم قطعیت و بهبود تصمیم‌گیری در مقایسه با روش‌های ثابت کمک کند.
+
+\section{تحلیل با توزیع نمایی و مکانیزم پیشنهادی}
+
+حال فرض کنید قیمت‌های پیشنهادی $v_1, v_2, \dots, v_N$ از توزیع نمایی با پارامتر $\lambda$ پیروی می‌کنند: 
+\[
+\mathcal{D} = \text{Exp}(\lambda).
+\]
+
+در اینجا $\lambda$ یک محهول است، برای تولید داده های خود در شبیه‌سازی ها از $\lambda=0.1$ استفاده کنید.
+
+\vspace{5mm}{\color{SimQColor}\hrule}
+\begin{SimQuestion}
+	
+مکانیزم‌های مختلف را با توزیع نمایی مقایسه کنید.
+
+\begin{enumerate}
+    \item مکانیزم مسئله منشی (توقف بهینه) را در این سناریو شبیه‌سازی کنید و امید بهره را بر حسب $N$ بدست آورید.
+    \item مکانیزمی که در آن ابتدا بخشی از داده‌ها مشاهده و سپس مقدار آستانه تنظیم می‌شود را بررسی کنید. امید بهره را بر اساس آستانه محاسبه کنید. فرض کنید $r=\frac{N}{2}$ باشد.
+    \item دو مکانیزم فوق را از نظر بهره مقایسه کنید. کدام مکانیزم عملکرد بهتری دارد؟ باند بالا و باند پایینی که در قسمت های قبل معرفی شد را نیز شبیه‌سازی و مقایسه کنید.
+\end{enumerate}
+\end{SimQuestion}
+{\color{SimQColor}\hrule}\vspace{5mm}
+
+\textbf{پرسش امتیازی:} مکانیزم خود را طراحی کنید.
+
+\begin{enumerate}
+    \item مکانیزمی جدید برای فروش کالا پیشنهاد دهید که بر اساس تحلیل شما بتواند عملکرد بهتری داشته باشد.
+    \item فرض کنید اطلاعات اضافی درباره پارامتر $\lambda$ دارید. چگونه می‌توانید از این اطلاعات استفاده کنید؟
+    \item مکانیزم پیشنهادی خود را با مکانیزم‌های پیشین مقایسه کنید.
+    \item در حالت $N=25$، امید ریاضی، و واریانس، پاسخ بهره خود را تخمین زده و اعلام کنید.
+\end{enumerate}
+
+\end{document}
+
+
+
